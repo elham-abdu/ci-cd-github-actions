@@ -6,7 +6,7 @@ const app = express();
 // Health check endpoint
 app.get('/health', (req, res) => {
     res.status(200).json({
-        status: 'ok',
+        status: 'correct',
         time: Date.now()
     });
 });

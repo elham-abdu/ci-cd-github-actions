@@ -1,0 +1,22 @@
+
+name: Deploy to Render
+
+on:
+  workflow_run:
+    workflows: ["Node.js Continuous Integration"]
+    types: [completed]
+    branches: [main]
+
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Render Deployment
+        run: curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
+
+--------------------------------------------------------------------------
+git add .github/workflows/cd.yml
+git commit -m "Add CD workflow for Render deployment"
+git push
