@@ -8,7 +8,7 @@ describe('Health Check API', () => {
         const response = await request(app).get('/health');
 
         expect(response.statusCode).toBe(200);
-        expect(response.body.status).toBe('wrong'); // This assertion is intentionally incorrect to demonstrate a failing test
+        expect(response.body.status).toBe('ok'); // This assertion is intentionally incorrect to demonstrate a failing test
     });
 
 });
